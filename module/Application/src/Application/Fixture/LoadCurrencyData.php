@@ -15,6 +15,7 @@ class LoadCurrencyData implements OrderedFixtureInterface, FixtureInterface
         return 2;
     }
 
+    // loading currencies EUR and BNS
     public function load(ObjectManager $objectManager)
     {
     	$currencies = array("EUR", "BNS");
@@ -26,7 +27,6 @@ class LoadCurrencyData implements OrderedFixtureInterface, FixtureInterface
     		$objectManager->persist($currency);
     		$objectManager->flush();
     	}
-
-
     }
+
 }

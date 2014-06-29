@@ -17,6 +17,9 @@ Application\Entity\Bonus:
     unit:
       type: smallint
       length: 2
+    multiplier:
+      type: integer
+      length: 4
     trigger:
       type: smallint
       length: 2

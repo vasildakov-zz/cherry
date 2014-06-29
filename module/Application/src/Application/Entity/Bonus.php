@@ -17,7 +17,7 @@ class Bonus
 
     public $genderOptions = array(
                     self::UNIT_CURRENCY    => "Currency",
-                    self::UNIT_PERCENTAGE  => "Percentage"
+                    self::UNIT_PERCENTAGE  => "Percentage",
                 );
 
     /**
@@ -27,10 +27,11 @@ class Bonus
     const STATUS_WAGERED        = 2;
     const STATUS_DEPLETED       = 3;
 
+
     public $statusOptions = array(
                     self::STATUS_ACTIVE    => "Active",
                     self::STATUS_WAGERED   => "Wagered",
-                    self::STATUS_DEPLETED  => "Depleted"
+                    self::STATUS_DEPLETED  => "Depleted",
                 );
 
     /**
@@ -63,13 +64,18 @@ class Bonus
     /**
      * @var integer
      */
-    private $status;
+    private $trigger;
+    
+    /**
+     * @var integer
+     */
+    private $multiplier;
 
     /**
      * @var integer
      */
-    private $trigger;
-    
+    private $status;
+
 
     /**
      * Get id
@@ -200,5 +206,29 @@ class Bonus
     public function getTrigger()
     {
         return $this->trigger;
+    }
+
+
+    /**
+     * Set multiplier
+     *
+     * @param integer $multiplier
+     * @return Bonus
+     */
+    public function setMultiplier($multiplier)
+    {
+        $this->multiplier = $multiplier;
+
+        return $this;
+    }
+
+    /**
+     * Get multiplier
+     *
+     * @return integer 
+     */
+    public function getMultiplier()
+    {
+        return $this->multiplier;
     }
 }
