@@ -76,14 +76,7 @@ class AuthenticationController extends AbstractActionController
                 $identity = $authResult->getIdentity();
                 $authService->getStorage()->write($identity);
 
-                $loggedUser = $authService->getIdentity();
-                #var_dump($loggedUser); 
-                #exit();
-
-                #$this->session = new Container('login_session');
-                #$this->session->username = $authResult->getIdentity()->getUsername();
-
-                // the redirect must be determined by user role
+                // redirect to player account page
                 return $this->redirect()->toRoute('account');
             }
 
