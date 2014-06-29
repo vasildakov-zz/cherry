@@ -12,7 +12,7 @@ use Application\Entity\Login as Login;
 
 class LoginListener {
 
-    public function onFlush(Login $click, Event $args)
+    public function onFlush(Login $login, Event $args)
     {
         $entity = $args->getEntity();
         $entityManager = $args->getEntityManager();
@@ -24,12 +24,13 @@ class LoginListener {
         	// apply first login bonus
         	if($player->getLogins()->count() == 1 ) {
 
-        		$currency = $entityManager->getRepository('Application\Entity\Currency')->findOneBy(array('name' => 'BNS'));
+        		$currency = $entityManager->getRepository('Application\Entity\Currency')
+                            ->findOneBy(array('name' => 'BNS'));
 
         		// retrive player bonus wallet if exists
         		if(true === $player->hasWallet($currency)) {
         			$wallet = $entityManager->getRepository('Application\Entity\Wallet')
-        								    ->findOneBy(array('player' => $player->getId(), 'currency' => $currency->getId()));
+        			         ->findOneBy(array('player' => $player->getId(), 'currency' => $currency->getId()));
         		}
         		else {
         			$wallet = new Application\Entity\Wallet();
@@ -41,7 +42,7 @@ class LoginListener {
         		}
 
         		$bonus = $entityManager->getRepository('Application\Entity\Bonus')
-        							   ->findOneBy(array('trigger' => \Application\Entity\Bonus::TRIGGER_LOGIN));
+        		          ->findOneBy(array('trigger' => \Application\Entity\Bonus::TRIGGER_LOGIN));
 
         		$wallet->setAmount($bonus->getReward());
 
