@@ -1,0 +1,13 @@
+Application\Entity\Currency:
+  repositoryClass: Application\Repository\CurrencyRepository
+  table: currency
+  type: entity
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    name:
+      type: string
+      length: 255

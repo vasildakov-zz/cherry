@@ -26,6 +26,22 @@ class Module
         return include __DIR__ . '/config/module.config.php';
     }
 
+    public function getServiceConfig() 
+    {
+        return array(
+            'abstract_factories' => array(),
+            'aliases' => array(),
+            'factories' => array(
+                'Zend\Authentication\AuthenticationService' => function($serviceManager) {
+                    return $serviceManager->get('doctrine.authenticationservice.orm_default');  
+                },
+            ),
+            'invokables' => array(),
+            'services' => array(),
+            'shared' => array(),
+        );
+    }
+
     public function getAutoloaderConfig()
     {
         return array(

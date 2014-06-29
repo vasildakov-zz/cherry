@@ -1,0 +1,29 @@
+<div class="row"> 
+	<div class="col-lg-12">
+		<h1>My Account</h1>
+	</div>
+</div>
+
+<div class="row"> 
+	<div class="col-lg-3">
+		<?php echo $this->navigation('navigation')->menu()->setUlClass('nav')->render(); ?>
+	</div>
+
+	<div class="col-lg-9">
+		<h2>Hello <?php echo $player->getFullName(); ?></h2>
+		<h3>Account Balance: <?php echo $player->getBalance(); ?> </h3>
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<a href="<?php echo $this->url('deposit') ?>" class="btn btn-primary">Deposit</a>
+				<a href="<?php echo $this->url('withdraw') ?>" class="btn btn-default">Withdraw</a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-12">
+				<?php var_dump($player->getWallets() )?>
+			</div>
+		</div>
+	</div>
+</div>

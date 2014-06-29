@@ -1,0 +1,25 @@
+Application\Entity\Bonus:
+  repositoryClass: Application\Repository\BonusRepository
+  type: entity
+  table: bonus
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    name:
+      type: string
+      length: 255
+    reward:
+      type: string
+      length: 255
+    unit:
+      type: smallint
+      length: 2
+    trigger:
+      type: smallint
+      length: 2
+    status:
+      type: smallint
+      length: 2

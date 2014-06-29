@@ -10,7 +10,7 @@ return array(
                     'user'     => 'root',
                     'password' => '1',
                     'charset' => 'utf8',
-                    'dbname'   => 'zf2d2',
+                    'dbname'   => 'cherry',
                     'driverOptions' => array(
                         1002=>'SET NAMES utf8'
                     )

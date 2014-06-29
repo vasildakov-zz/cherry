@@ -22,10 +22,94 @@ return array(
                     ),
                 ),
             ),
-            // The following is a route to simplify getting started creating
-            // new controllers and actions without needing to create a new
-            // module. Simply drop new controllers in, and you can access them
-            // using the path /application/:controller/:action
+            'login' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/login',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller'    => 'Authentication',
+                        'action'        => 'login',
+                    ),
+                ),
+            ),
+            'register' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/register',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller'    => 'Authentication',
+                        'action'        => 'register',
+                    ),
+                ),
+            ),
+            'account' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/account',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller'    => 'Account',
+                        'action'        => 'index',
+                    ),
+                ),
+            ),
+            'profile' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/account/profile',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller'    => 'Profile',
+                        'action'        => 'index',
+                    ),
+                ),
+            ),
+            'deposit' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/account/deposit',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller'    => 'Wallet',
+                        'action'        => 'deposit',
+                    ),
+                ),
+            ),
+            'withdraw' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/account/withdraw',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller'    => 'Wallet',
+                        'action'        => 'withdraw',
+                    ),
+                ),
+            ),
+            'bonuses' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/account/bonuses',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller'    => 'Bonus',
+                        'action'        => 'index',
+                    ),
+                ),
+            ),
+            'games' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/games',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller'    => 'Game',
+                        'action'        => 'index',
+                    ),
+                ),
+            ),
             'application' => array(
                 'type'    => 'Literal',
                 'options' => array(
@@ -55,6 +139,9 @@ return array(
         ),
     ),
     'service_manager' => array(
+        'factories' => array(
+            'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
+        ),
         'abstract_factories' => array(
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
             'Zend\Log\LoggerAbstractServiceFactory',
@@ -75,7 +162,14 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
+            'Application\Controller\Authentication' => 'Application\Controller\AuthenticationController',
+            'Application\Controller\Account' => 'Application\Controller\AccountController',
+            'Application\Controller\Index' => 'Application\Controller\IndexController',
+            'Application\Controller\Account' => 'Application\Controller\AccountController',
+            'Application\Controller\Profile' => 'Application\Controller\ProfileController',
+            'Application\Controller\Bonus' => 'Application\Controller\BonusController',
+            'Application\Controller\Game' => 'Application\Controller\GameController',
+            'Application\Controller\Wallet' => 'Application\Controller\WalletController',
         ),
     ),
     'view_manager' => array(
@@ -111,14 +205,14 @@ return array(
                     'port'     => '3306',
                     'user'     => 'root',
                     'password' => '1',
-                    'dbname'   => 'zf2d2',
+                    'dbname'   => 'cherry',
                 )
             )
         ),
         'authentication' => array(
             'orm_default' => array(
                 'object_manager' => 'Doctrine\ORM\EntityManager',
-                'identity_class' => 'Application\Entity\User',
+                'identity_class' => 'Application\Entity\Player',
                 'identity_property' => 'email',
                 'credential_property' => 'password',
             ),
@@ -138,6 +232,30 @@ return array(
         ),
     ),
     'data-fixture' => array(
-        'location' => __DIR__ . '/../src/Application/Fixture',
+        'location' => __DIR__ . '/../src/'.__NAMESPACE__.'/Fixture',
+    ),
+    'navigation' => array(
+        'default' => array(
+            array(
+                'label' => 'My Account',
+                'route' => 'account',
+            ),
+            array(
+                'label' => 'My Profile',
+                'route' => 'profile',
+            ),
+            array(
+                'label' => 'Deposit',
+                'route' => 'deposit',
+            ),
+            array(
+                'label' => 'Withdraw',
+                'route' => 'withdraw',
+            ),
+            array(
+                'label' => 'Bonuses',
+                'route' => 'bonuses',
+            ),
+        ),
     ),
 );

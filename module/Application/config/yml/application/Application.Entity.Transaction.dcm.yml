@@ -1,0 +1,25 @@
+Application\Entity\Transaction:
+  repositoryClass: Application\Repository\TransactionRepository
+  type: entity
+  table: transaction
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    type:
+      type: integer
+      length: 2
+    amount:
+      type: decimal
+      precision: 2
+    created_at:
+      type: datetime
+  manyToOne:
+    wallet:
+      targetEntity: Application\Entity\Wallet
+      inversedBy: transactions
+      joinColumn: 
+        name: wallet_id
+        referencedColumnName: id

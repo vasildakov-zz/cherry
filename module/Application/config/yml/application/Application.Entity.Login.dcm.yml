@@ -1,0 +1,19 @@
+Application\Entity\Login:
+  repositoryClass: Application\Repository\LoginRepository
+  type: entity
+  table: login
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    created_at:
+      type: datetime
+  manyToOne:
+    player:
+      targetEntity: Application\Entity\Player
+      inversedBy: logins
+      joinColumn: 
+        name: player_id
+        referencedColumnName: id

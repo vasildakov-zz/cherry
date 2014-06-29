@@ -1,0 +1,41 @@
+Application\Entity\Wallet:
+  repositoryClass: Application\Repository\WalletRepository
+  table: wallet
+  type: entity
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    name:
+      type: string
+      length: 255
+    amount:
+      type: decimal
+      precision: 2
+    created_at:
+      type: datetime
+    updated_at:
+      type: datetime  
+    status:
+      type: smallint
+      length: 2
+  oneToOne:
+    currency:
+      targetEntity: Application\Entity\Currency
+      inversedBy: wallet
+      joinColumn:
+        name: currency_id
+        referencedColumnName: id
+  oneToMany:
+    transactions:
+      targetEntity: Application\Entity\Transaction
+      mappedBy: wallet
+  manyToOne:
+    player:
+      targetEntity: Application\Entity\Player
+      inversedBy: wallets
+      joinColumn: 
+        name: player_id
+        referencedColumnName: id
