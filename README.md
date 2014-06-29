@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-Zend2 Doctrine2 Skeleton Application
+Cherry Web Developer Assessment
 =======================
 
 
@@ -13,8 +12,8 @@ and use `composer` to install dependencies :
 
 ```console
 cd my/project/dir
-git clone https://github.com/vasildakov/zend2-doctrine2-skeleton.git --recursive
-cd zend2-doctrine2-skeleton
+git clone https://github.com/vasildakov/cherry.git --recursive
+cd cherry
 php composer.phar self-update
 php composer.phar install
 
@@ -50,9 +49,9 @@ project and you should be ready to go! It should look something like below:
 ```apacheconf
 <VirtualHost *:80>
     ServerName zend2-doctrine2-skeleton
-    DocumentRoot /path/to/zend2-doctrine2-skeleton/public
+    DocumentRoot /path/to/cherry/public
     SetEnv APPLICATION_ENV "development"
-    <Directory /path/to/zend2-doctrine2-skeleton/public>
+    <Directory /path/to/cherry/public>
         DirectoryIndex index.php
         AllowOverride All
         Order allow,deny
@@ -74,9 +73,9 @@ return array(
                 'params' => array(
                     'host'     => 'localhost',
                     'port'     => '3306',
-                    'user'     => 'username',
-                    'password' => 'xxxxxxxx',
-                    'dbname'   => 'database',
+                    'user'     => 'root',
+                    'password' => '1',
+                    'dbname'   => 'cherry',
                 )
             )
         )
@@ -169,9 +168,3 @@ Generate repositories
 ```console
 ./vendor/bin/doctrine-module data-fixture:import
 ```
-=======
-cherry
-======
-
-Web	Developer	Assessment
->>>>>>> aaea2412029dbc8bf3dcef11e156f417422f3730
