@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Zend2 Doctrine2 Skeleton Application
 =======================
 
@@ -168,3 +169,9 @@ Generate repositories
 ```console
 ./vendor/bin/doctrine-module data-fixture:import
 ```
+=======
+cherry
+======
+
+Web	Developer	Assessment
+>>>>>>> aaea2412029dbc8bf3dcef11e156f417422f3730
