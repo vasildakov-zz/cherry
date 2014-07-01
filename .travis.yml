@@ -16,7 +16,7 @@ before_script:
 
 script:
   - mkdir -p build/logs
-  - phpunit -c module/Application/tests/phpunit.xml.dist
+  - phpunit -c module/Application/test/phpunit.xml.dist
 
 after_script:
   - php vendor/bin/coveralls -v
