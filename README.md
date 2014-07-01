@@ -1,8 +1,8 @@
 Cherry Web Developer Assessment
 =======================
 
-[![Build Status](https://travis-ci.org/vasildakov/cherry.svg?branch=master)](https://travis-ci.org/vasildakov/boss-poker-gds)
-[![Coverage Status](https://coveralls.io/repos/vasildakov/cherry/badge.png)](https://coveralls.io/r/vasildakov/boss-poker-gds)
+[![Build Status](https://travis-ci.org/vasildakov/cherry.svg?branch=master)](https://travis-ci.org/vasildakov/cherry)
+[![Coverage Status](https://coveralls.io/repos/vasildakov/cherry/badge.png)](https://coveralls.io/r/vasildakov/cherry)
 
 Installation
 ------------
