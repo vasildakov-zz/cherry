@@ -251,6 +251,6 @@ class Bonus
      */
     public function isApplicable(\Application\Entity\Transaction $transaction) 
     {
-        return ($transaction >= $this->getWageringRequirement() ) ? true : false;
+        return ($transaction->getAmount() >= $this->getWageringRequirement() ) ? true : false;
     }
 }

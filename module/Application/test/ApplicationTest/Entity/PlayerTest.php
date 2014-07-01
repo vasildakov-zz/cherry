@@ -33,8 +33,10 @@ class PlayerTest extends \PHPUnit_Framework_TestCase
      */
     public function testPlayer1HasRealMoney() 
     {
-    	$currency = $this->entityManager->getRepository('Application\Entity\Currency')->findOneBy(array("name" => "EUR"));
-    	$balance = $this->player1->getBalance($currency);
+    	$realMoney = $this->entityManager->getRepository('Application\Entity\Currency')
+                                        ->findOneBy(array("name" => "EUR"));
+
+    	$balance = $this->player1->getBalance($realMoney);
     	$this->assertGreaterThan(0, $balance);
     }
 
@@ -44,8 +46,10 @@ class PlayerTest extends \PHPUnit_Framework_TestCase
      */
     public function testPlayer1HasBonusMoney() 
     {
-    	$currency = $this->entityManager->getRepository('Application\Entity\Currency')->findOneBy(array("name" => "BNS"));
-    	$balance = $this->player1->getBalance($currency);
+    	$bonusMoney = $this->entityManager->getRepository('Application\Entity\Currency')
+                                        ->findOneBy(array("name" => "BNS"));
+
+    	$balance = $this->player1->getBalance($bonusMoney);
     	$this->assertEquals(0, $balance);
     }
 
@@ -55,8 +59,10 @@ class PlayerTest extends \PHPUnit_Framework_TestCase
      */
     public function testPlayer2HasRealMoney() 
     {
-    	$currency = $this->entityManager->getRepository('Application\Entity\Currency')->findOneBy(array("name" => "EUR"));
-    	$balance = $this->player2->getBalance($currency);
+    	$realMoney = $this->entityManager->getRepository('Application\Entity\Currency')
+                                        ->findOneBy(array("name" => "EUR"));
+
+    	$balance = $this->player2->getBalance($realMoney);
     	$this->assertEquals(0, $balance);
     }
 
