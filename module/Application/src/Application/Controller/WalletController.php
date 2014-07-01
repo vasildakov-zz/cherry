@@ -51,6 +51,7 @@ class WalletController extends AbstractActionController
             $transaction->setWallet($wallet);
             $transaction->setAmount( (double)$this->getRequest()->getPost('amount'));
             $transaction->setType(\Application\Entity\Transaction::TYPE_DEPOSIT);
+            $transaction->setComment("added by the player");
             $transaction->setCreatedAt(new \DateTime);
 
             $this->getEntityManager()->persist($transaction);

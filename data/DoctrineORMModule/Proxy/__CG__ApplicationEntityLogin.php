@@ -243,15 +243,4 @@ class Login extends \Application\Entity\Login implements \Doctrine\ORM\Proxy\Pro
         return parent::setLogins($logins);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function getLogins()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLogins', array());
-
-        return parent::getLogins();
-    }
-
 }

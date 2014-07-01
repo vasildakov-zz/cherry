@@ -10,10 +10,10 @@ Application\Entity\Login:
   fields:
     created_at:
       type: datetime
-#  manyToOne:
-#    player:
-#      targetEntity: Application\Entity\Player
-#      inversedBy: logins
-#      joinColumn: 
-#        name: player_id
-#        referencedColumnName: id
+  manyToOne:
+    player:
+      targetEntity: Application\Entity\Player
+      inversedBy: logins
+      joinColumn: 
+        name: player_id
+        referencedColumnName: id

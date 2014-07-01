@@ -64,10 +64,10 @@ class Transaction extends \Application\Entity\Transaction implements \Doctrine\O
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'typeOptions', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'type', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'amount', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'created_at', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'wallet');
+            return array('__isInitialized__', 'typeOptions', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'type', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'amount', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'created_at', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'wallet', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'comment');
         }
 
-        return array('__isInitialized__', 'typeOptions', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'type', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'amount', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'created_at', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'wallet');
+        return array('__isInitialized__', 'typeOptions', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'type', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'amount', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'created_at', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'wallet', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'comment');
     }
 
     /**
@@ -274,6 +274,39 @@ class Transaction extends \Application\Entity\Transaction implements \Doctrine\O
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getWallet', array());
 
         return parent::getWallet();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setComment($comment)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setComment', array($comment));
+
+        return parent::setComment($comment);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getComment()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getComment', array());
+
+        return parent::getComment();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function onFlush()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'onFlush', array());
+
+        return parent::onFlush();
     }
 
 }

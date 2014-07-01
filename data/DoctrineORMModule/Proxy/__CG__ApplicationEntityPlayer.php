@@ -83,10 +83,10 @@ class Player extends \Application\Entity\Player implements \Doctrine\ORM\Proxy\P
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'genderOptions', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'username', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'password', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'name', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'age', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'gender', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'created_at', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'updated_at', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'wallets', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'surname', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'email', 'sm');
+            return array('__isInitialized__', 'genderOptions', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'username', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'password', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'name', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'age', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'gender', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'created_at', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'updated_at', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'wallets', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'logins', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'surname', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'email', 'sm');
         }
 
-        return array('__isInitialized__', 'genderOptions', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'username', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'password', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'name', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'age', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'gender', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'created_at', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'updated_at', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'wallets', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'surname', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'email', 'sm');
+        return array('__isInitialized__', 'genderOptions', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'username', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'password', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'name', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'age', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'gender', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'created_at', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'updated_at', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'wallets', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'logins', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'surname', '' . "\0" . 'Application\\Entity\\Player' . "\0" . 'email', 'sm');
     }
 
     /**
@@ -426,6 +426,28 @@ class Player extends \Application\Entity\Player implements \Doctrine\ORM\Proxy\P
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'hasWallet', array());
 
         return parent::hasWallet();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeLogin(\Application\Entity\Login $login)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeLogin', array($login));
+
+        return parent::removeLogin($login);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getLogins()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLogins', array());
+
+        return parent::getLogins();
     }
 
     /**

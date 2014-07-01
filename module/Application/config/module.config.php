@@ -149,6 +149,10 @@ return array(
         'aliases' => array(
             'translator' => 'MvcTranslator',
         ),
+        'invokables' => array(
+            'LoginListener' => 'Application\Listener\LoginListener',
+            'TransactionListener' => 'Application\Listener\TransactionListener',
+        ),
     ),
     'translator' => array(
         'locale' => 'en_US',

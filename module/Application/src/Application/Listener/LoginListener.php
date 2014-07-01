@@ -19,10 +19,12 @@ class LoginListener {
 
         if ($entity instanceof Login) {
         	// first login bonus code 
-        	/* $player = $entity->getPlayer();
+
+        	$player = $entity->getPlayer();
+            $logins = $entityManager->getRepository('Application\Entity\Login')->findOneBy(array('player' => $player));
 
         	// apply first login bonus
-        	if($player->getLogins()->count() == 1 ) {
+        	if($logins->count() == 1 ) {
 
         		$currency = $entityManager->getRepository('Application\Entity\Currency')
                             ->findOneBy(array('name' => 'BNS'));
@@ -30,7 +32,7 @@ class LoginListener {
         		// retrive player bonus wallet if exists
         		if(true === $player->hasWallet($currency)) {
         			$wallet = $entityManager->getRepository('Application\Entity\Wallet')
-        			         ->findOneBy(array('player' => $player->getId(), 'currency' => $currency->getId()));
+        			         ->findOneBy(array('player' => $player, 'currency' => $currency));
         		}
         		else {
         			$wallet = new Application\Entity\Wallet();
@@ -44,15 +46,17 @@ class LoginListener {
         		$bonus = $entityManager->getRepository('Application\Entity\Bonus')
         		          ->findOneBy(array('trigger' => \Application\Entity\Bonus::TRIGGER_LOGIN));
 
-        		$wallet->setAmount($bonus->getReward());
+                $transaction = new Transaction;
+                $transaction->setAmount($bonus->getReward());
+                $transaction->setWallet($wallet); 
+                $transaction->setType(Transaction::TYPE_BONUS); 
+                $transaction->setComment($bonus->getReward());
+                $transaction->setCreatedAt( new \DateTime); 
 
-        		$entityManager->persist($wallet);
-		    	$entityManager->flush();
+                $entityManager->persist($transaction);
+                $entityManager->flush();
 
-        	} */
+        	} 
         }
     }
-
-
-
 }

@@ -23,6 +23,8 @@ Application\Entity\Bonus:
     event_trigger:
       type: smallint
       length: 2
+    description:
+      type: string
     status:
       type: smallint
       length: 2

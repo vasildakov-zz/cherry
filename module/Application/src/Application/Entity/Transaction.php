@@ -2,10 +2,16 @@
 
 namespace Application\Entity;
 
+use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Transaction
+ * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
+ * @ORM\EntityListeners({"Application\Listener\TransactionListener"})
+ * @ORM\Entity(repositoryClass="Application\Repository\TransactionRepository") 
+ * @ORM\Table(name="transaction")
  */
 class Transaction
 {
@@ -17,9 +23,12 @@ class Transaction
 
     const TYPE_WITHDRAW  = 2;
 
+    const TYPE_BONUS     = 3;
+
     public $typeOptions = array(
                     self::TYPE_DEPOSIT      =>  "Deposit",
                     self::TYPE_WITHDRAW     =>  "Withdraw",
+                    self::TYPE_BONUS        =>  "Bonus",
                 );
 
     /**
@@ -149,4 +158,34 @@ class Transaction
     {
         return $this->wallet;
     }
+    /**
+     * @var string
+     */
+    private $comment;
+
+
+    /**
+     * Set comment
+     *
+     * @param string $comment
+     * @return Transaction
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Get comment
+     *
+     * @return string 
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+
 }

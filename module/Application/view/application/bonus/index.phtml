@@ -10,6 +10,17 @@
 	</div>
 
 	<div class="col-lg-9">
-		content
+		<h3>Available Bonuses:</h3>
+		<table class="table">
+			<?php foreach ($bonuses as $bonus): ?>
+				<tr>
+					<td><?php echo $bonus->getId() ?></td>
+					<td><?php echo $bonus->getName() ?></td>
+				</tr>
+			<?php endforeach; ?>
+		</table>
+
+		<h3>Available Bonuses:</h3>
+
 	</div>
 </div>

@@ -27,7 +27,6 @@ class BonusTest extends \PHPUnit_Framework_TestCase
     	$transaction = new \Application\Entity\Transaction();
         $transaction->setAmount(250.00);
         $this->assertTrue($this->firstDepositBonus->isApplicable($transaction) );
-    	
     }
 
 
@@ -40,6 +39,13 @@ class BonusTest extends \PHPUnit_Framework_TestCase
         $transaction = new \Application\Entity\Transaction();
         $transaction->setAmount(100.00);
         $this->assertFalse($this->firstDepositBonus->isApplicable($transaction));
+    }
+
+
+    public function testFirstLoginBonus() 
+    {
+        $player = $this->entityManager->find('Application\Entity\Player', 1);
+        $player->getLogins();
     }
 
 

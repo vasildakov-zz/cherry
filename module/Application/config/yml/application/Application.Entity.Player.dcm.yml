@@ -40,7 +40,7 @@ Application\Entity\Player:
     wallets:
       targetEntity: Application\Entity\Wallet
       mappedBy: player
-  oneToMany:
-    logins:
-      targetEntity: Application\Entity\Login
-      mappedBy: player
+#  oneToMany:
+#    logins:
+#      targetEntity: Application\Entity\Login
+#      mappedBy: player

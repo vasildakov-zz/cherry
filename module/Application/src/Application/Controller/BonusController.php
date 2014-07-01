@@ -43,13 +43,8 @@ class BonusController extends AbstractActionController
     {
     	$bonuses = $this->getEntityManager()->getRepository('Application\Entity\Bonus')->findAll();
 
-        $bonus = $this->getEntityManager()->find('Application\Entity\Bonus', 1);
-        //var_dump($bonus->getWageringRequirement());
-        //var_dump($bonus->isApplicable());
-
-
     	return new ViewModel(array(
-            'bonus' => $bonus,
+            'bonuses' => $bonuses,
         ));
     }
 }

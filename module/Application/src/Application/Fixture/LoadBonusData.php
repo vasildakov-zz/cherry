@@ -20,16 +20,18 @@ class LoadBonusData implements OrderedFixtureInterface, FixtureInterface
     	$bonuses = array(
             array(
                 "name" => "First deposit bonus", 
-                "reward" => 20, 
+                "reward" => 10, 
                 "unit" => \Application\Entity\Bonus::UNIT_PERCENTAGE, 
                 "event_trigger" => \Application\Entity\Bonus::TRIGGER_DEPOSIT,
-                "multiplier" => 1,
+                "description" => "We are offering all our new customers a welcome bonus of €10. The welcome bonus is only available on your first deposit to CherryCasino.",
+                "multiplier" => 25,
                 ),
             array(
                 "name" => "First login bonus",   
-                "reward" => 50, 
+                "reward" => 20, 
                 "unit" => \Application\Entity\Bonus::UNIT_CURRENCY,
                 "event_trigger" => \Application\Entity\Bonus::TRIGGER_LOGIN,
+                "description" => "We are offering all our new customers a first login bonus of €20.",
                 "multiplier" => 5,
             ),
         );
@@ -42,6 +44,7 @@ class LoadBonusData implements OrderedFixtureInterface, FixtureInterface
             $bonus->setUnit($value['unit']);
             $bonus->setEventTrigger($value['event_trigger']);
             $bonus->setMultiplier($value['multiplier']);
+            $bonus->setDescription($value['description']);
             $bonus->setStatus(\Application\Entity\Bonus::STATUS_ACTIVE);
 
     		$objectManager->persist($bonus);

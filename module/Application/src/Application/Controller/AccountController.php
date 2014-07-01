@@ -19,6 +19,8 @@ class AccountController extends AbstractActionController
         $authService = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
         $player = $authService->getIdentity();
 
+        var_dump($player->getLogins());
+
         // $currency = $this->getEntityManager()->getRepository('Application\Entity\Currency')->findOneBy(array('name' => "EUR"));
 
         return new ViewModel(array(

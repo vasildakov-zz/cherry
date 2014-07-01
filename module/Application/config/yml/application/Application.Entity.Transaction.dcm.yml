@@ -17,6 +17,9 @@ Application\Entity\Transaction:
       scale: 2
     created_at:
       type: datetime
+    comment:
+      type: string
+      length: 255
   manyToOne:
     wallet:
       targetEntity: Application\Entity\Wallet
@@ -24,3 +27,6 @@ Application\Entity\Transaction:
       joinColumn: 
         name: wallet_id
         referencedColumnName: id
+  entityListeners:
+    Application\Listener\TransactionListener:
+      onFlush: [onFlush]

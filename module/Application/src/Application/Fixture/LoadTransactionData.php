@@ -32,6 +32,7 @@ class LoadTransactionData implements OrderedFixtureInterface, FixtureInterface
         	$transaction->setWallet($wallet);
         	$transaction->setAmount($amount);
         	$transaction->setType(\Application\Entity\Transaction::TYPE_DEPOSIT);
+            $transaction->setComment("fixture");
         	$transaction->setCreatedAt(new \DateTime);
 
     		$objectManager->persist($transaction);

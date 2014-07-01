@@ -104,13 +104,5 @@ class Login
         return $this;
     }
 
-    /**
-     * Get logins
-     *
-     * @return \Application\Entity\Login 
-     */
-    public function getLogins()
-    {
-        return $this->logins;
-    }
+
 }

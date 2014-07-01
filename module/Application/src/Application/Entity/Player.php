@@ -65,6 +65,18 @@ class Player extends ServiceLocatorAwareEntity
      */
     private $updated_at;
 
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $wallets;
+
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $logins;
+
     /**
      * Magic getter to expose protected properties.
      *
@@ -306,10 +318,7 @@ class Player extends ServiceLocatorAwareEntity
     {
         return $this->updated_at;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $wallets;
+
 
     /**
      * Constructor
@@ -317,6 +326,8 @@ class Player extends ServiceLocatorAwareEntity
     public function __construct()
     {
         $this->wallets = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->logins  = new \Doctrine\Common\Collections\ArrayCollection();
+
         $this->created_at = new \DateTime(); 
     }
 
@@ -344,6 +355,26 @@ class Player extends ServiceLocatorAwareEntity
 
 
     /**
+     * Remove logins
+     *
+     * @param \Application\Entity\Login $login
+     */
+    public function removeLogin(\Application\Entity\Login $login)
+    {
+        $this->wallets->removeElement($login);
+    }
+
+    /**
+     * Get logins
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getLogins()
+    {
+        return $this->logins;
+    }
+
+    /**
      * Remove wallets
      *
      * @param \Application\Entity\Wallet $wallet
@@ -362,6 +393,9 @@ class Player extends ServiceLocatorAwareEntity
     {
         return $this->wallets;
     }
+
+
+
     /**
      * @var string
      */
