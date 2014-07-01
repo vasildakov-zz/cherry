@@ -1,0 +1,6 @@
+src_dir: ./
+
+json_path: build/overalls.json
+
+coverage_clover:
+  - module/Application/build/logs/clover.xml
