@@ -16,7 +16,7 @@ before_script:
 
 script:
   - mkdir -p build/logs
-  - cd /module/Application/tests
+  - cd module/Application/tests
   - phpunit -c phpunit.xml.dist
 
 after_script:
