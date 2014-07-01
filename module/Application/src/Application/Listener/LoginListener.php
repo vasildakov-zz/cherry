@@ -19,7 +19,7 @@ class LoginListener {
 
         if ($entity instanceof Login) {
         	// first login bonus code 
-        	$player = $entity->getPlayer();
+        	/* $player = $entity->getPlayer();
 
         	// apply first login bonus
         	if($player->getLogins()->count() == 1 ) {
@@ -49,7 +49,7 @@ class LoginListener {
         		$entityManager->persist($wallet);
 		    	$entityManager->flush();
 
-        	}
+        	} */
         }
     }
 

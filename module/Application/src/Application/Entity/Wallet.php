@@ -34,7 +34,16 @@ class Wallet
      * @var integer
      */
     private $id;
-
+    
+    /**
+     * @var string
+     */
+    private $name;
+    
+    /**
+     * @var string
+     */
+    private $amount;
     /**
      * @var string
      */
@@ -55,6 +64,18 @@ class Wallet
      */
     private $player;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $transactions;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->transactions = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -157,18 +178,7 @@ class Wallet
     {
         return $this->player;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $transactions;
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->transactions = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Add transactions
@@ -176,9 +186,9 @@ class Wallet
      * @param \Application\Entity\Transactions $transactions
      * @return Wallet
      */
-    public function addTransaction(\Application\Entity\Transactions $transactions)
+    public function addTransaction(\Application\Entity\Transaction $transaction)
     {
-        $this->transactions[] = $transactions;
+        $this->transactions[] = $transaction;
 
         return $this;
     }
@@ -188,9 +198,9 @@ class Wallet
      *
      * @param \Application\Entity\Transactions $transactions
      */
-    public function removeTransaction(\Application\Entity\Transactions $transactions)
+    public function removeTransaction(\Application\Entity\Transaction $transaction)
     {
-        $this->transactions->removeElement($transactions);
+        $this->transactions->removeElement($transaction);
     }
 
     /**
@@ -202,10 +212,7 @@ class Wallet
     {
         return $this->transactions;
     }
-    /**
-     * @var string
-     */
-    private $name;
+
 
 
     /**
@@ -230,10 +237,6 @@ class Wallet
     {
         return $this->name;
     }
-    /**
-     * @var string
-     */
-    private $amount;
 
 
     /**
@@ -285,5 +288,25 @@ class Wallet
     public function getStatus()
     {
         return $this->status;
+    }
+
+
+    /**
+     * Returns the wallet balance
+     * @return double $balance
+     */
+    public function getBalance() 
+    {
+        $balance = 0;
+        
+        if( !empty($this->transactions) ) 
+        {
+            foreach($this->transactions as $transaction) 
+            {
+                $balance += $transaction->getAmount();
+            }
+        }
+
+        return $balance;
     }
 }

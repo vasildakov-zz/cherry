@@ -64,10 +64,10 @@ class Currency extends \Application\Entity\Currency implements \Doctrine\ORM\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Application\\Entity\\Currency' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Currency' . "\0" . 'name');
+            return array('__isInitialized__', '' . "\0" . 'Application\\Entity\\Currency' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Currency' . "\0" . 'name', '' . "\0" . 'Application\\Entity\\Currency' . "\0" . 'wallet');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Application\\Entity\\Currency' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Currency' . "\0" . 'name');
+        return array('__isInitialized__', '' . "\0" . 'Application\\Entity\\Currency' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Currency' . "\0" . 'name', '' . "\0" . 'Application\\Entity\\Currency' . "\0" . 'wallet');
     }
 
     /**
@@ -208,6 +208,28 @@ class Currency extends \Application\Entity\Currency implements \Doctrine\ORM\Pro
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getName', array());
 
         return parent::getName();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setWallet(\Application\Entity\Wallet $wallet = NULL)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setWallet', array($wallet));
+
+        return parent::setWallet($wallet);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getWallet()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getWallet', array());
+
+        return parent::getWallet();
     }
 
 }

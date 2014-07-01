@@ -64,10 +64,10 @@ class Wallet extends \Application\Entity\Wallet implements \Doctrine\ORM\Proxy\P
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Application\\Entity\\Wallet' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Wallet' . "\0" . 'currency', '' . "\0" . 'Application\\Entity\\Wallet' . "\0" . 'created_at', '' . "\0" . 'Application\\Entity\\Wallet' . "\0" . 'updated_at', '' . "\0" . 'Application\\Entity\\Wallet' . "\0" . 'transaction');
+            return array('__isInitialized__', 'unitOptions', 'statusOptions', '' . "\0" . 'Application\\Entity\\Wallet' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Wallet' . "\0" . 'name', '' . "\0" . 'Application\\Entity\\Wallet' . "\0" . 'amount', '' . "\0" . 'Application\\Entity\\Wallet' . "\0" . 'currency', '' . "\0" . 'Application\\Entity\\Wallet' . "\0" . 'created_at', '' . "\0" . 'Application\\Entity\\Wallet' . "\0" . 'updated_at', '' . "\0" . 'Application\\Entity\\Wallet' . "\0" . 'player', '' . "\0" . 'Application\\Entity\\Wallet' . "\0" . 'transactions', '' . "\0" . 'Application\\Entity\\Wallet' . "\0" . 'status');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Application\\Entity\\Wallet' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Wallet' . "\0" . 'currency', '' . "\0" . 'Application\\Entity\\Wallet' . "\0" . 'created_at', '' . "\0" . 'Application\\Entity\\Wallet' . "\0" . 'updated_at', '' . "\0" . 'Application\\Entity\\Wallet' . "\0" . 'transaction');
+        return array('__isInitialized__', 'unitOptions', 'statusOptions', '' . "\0" . 'Application\\Entity\\Wallet' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Wallet' . "\0" . 'name', '' . "\0" . 'Application\\Entity\\Wallet' . "\0" . 'amount', '' . "\0" . 'Application\\Entity\\Wallet' . "\0" . 'currency', '' . "\0" . 'Application\\Entity\\Wallet' . "\0" . 'created_at', '' . "\0" . 'Application\\Entity\\Wallet' . "\0" . 'updated_at', '' . "\0" . 'Application\\Entity\\Wallet' . "\0" . 'player', '' . "\0" . 'Application\\Entity\\Wallet' . "\0" . 'transactions', '' . "\0" . 'Application\\Entity\\Wallet' . "\0" . 'status');
     }
 
     /**
@@ -257,6 +257,28 @@ class Wallet extends \Application\Entity\Wallet implements \Doctrine\ORM\Proxy\P
     /**
      * {@inheritDoc}
      */
+    public function setPlayer(\Application\Entity\Player $player = NULL)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPlayer', array($player));
+
+        return parent::setPlayer($player);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPlayer()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPlayer', array());
+
+        return parent::getPlayer();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function addTransaction(\Application\Entity\Transaction $transaction)
     {
 
@@ -279,12 +301,89 @@ class Wallet extends \Application\Entity\Wallet implements \Doctrine\ORM\Proxy\P
     /**
      * {@inheritDoc}
      */
-    public function getTransaction()
+    public function getTransactions()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTransaction', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTransactions', array());
 
-        return parent::getTransaction();
+        return parent::getTransactions();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setName($name)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setName', array($name));
+
+        return parent::setName($name);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getName()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getName', array());
+
+        return parent::getName();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setAmount($amount)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAmount', array($amount));
+
+        return parent::setAmount($amount);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getAmount()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAmount', array());
+
+        return parent::getAmount();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setStatus($status)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatus', array($status));
+
+        return parent::setStatus($status);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getStatus()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatus', array());
+
+        return parent::getStatus();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getBalance()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBalance', array());
+
+        return parent::getBalance();
     }
 
 }

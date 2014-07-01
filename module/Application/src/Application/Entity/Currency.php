@@ -52,4 +52,32 @@ class Currency
     {
         return $this->name;
     }
+    /**
+     * @var \Application\Entity\Wallet
+     */
+    private $wallet;
+
+
+    /**
+     * Set wallet
+     *
+     * @param \Application\Entity\Wallet $wallet
+     * @return Currency
+     */
+    public function setWallet(\Application\Entity\Wallet $wallet = null)
+    {
+        $this->wallet = $wallet;
+
+        return $this;
+    }
+
+    /**
+     * Get wallet
+     *
+     * @return \Application\Entity\Wallet 
+     */
+    public function getWallet()
+    {
+        return $this->wallet;
+    }
 }

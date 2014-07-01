@@ -15,7 +15,7 @@ class Bonus
     const UNIT_CURRENCY         = 1;
     const UNIT_PERCENTAGE       = 2;
 
-    public $genderOptions = array(
+    public $unitOptions = array(
                     self::UNIT_CURRENCY    => "Currency",
                     self::UNIT_PERCENTAGE  => "Percentage",
                 );
@@ -64,7 +64,7 @@ class Bonus
     /**
      * @var integer
      */
-    private $trigger;
+    private $event_trigger;
     
     /**
      * @var integer
@@ -185,29 +185,6 @@ class Bonus
     }
 
 
-    /**
-     * Set trigger
-     *
-     * @param integer $trigger
-     * @return Bonus
-     */
-    public function setTrigger($trigger)
-    {
-        $this->trigger = $trigger;
-
-        return $this;
-    }
-
-    /**
-     * Get trigger
-     *
-     * @return integer 
-     */
-    public function getTrigger()
-    {
-        return $this->trigger;
-    }
-
 
     /**
      * Set multiplier
@@ -230,5 +207,50 @@ class Bonus
     public function getMultiplier()
     {
         return $this->multiplier;
+    }
+
+
+    /**
+     * Set event_trigger
+     *
+     * @param integer $eventTrigger
+     * @return Bonus
+     */
+    public function setEventTrigger($eventTrigger)
+    {
+        $this->event_trigger = $eventTrigger;
+
+        return $this;
+    }
+
+    /**
+     * Get event_trigger
+     *
+     * @return integer 
+     */
+    public function getEventTrigger()
+    {
+        return $this->event_trigger;
+    }
+
+
+    /**
+     * Returns wagering requirements
+     * cache-in wagering requirment = wagering requirement x bonus amount
+     * 
+     * @return double
+     */ 
+    public function getWageringRequirement() 
+    {
+        return $this->multiplier * $this->reward;
+    }
+
+
+    /**
+     * @return boolean 
+     */
+    public function isApplicable(\Application\Entity\Transaction $transaction) 
+    {
+        return ($transaction >= $this->getWageringRequirement() ) ? true : false;
     }
 }

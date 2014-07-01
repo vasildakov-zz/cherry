@@ -9,7 +9,7 @@ namespace Application\Form;
 
 use Zend\Form\Form;
 
-class LoginForm extends Form
+class DepositForm extends Form
 {
     public function __construct($name = null)
     {
@@ -34,6 +34,16 @@ class LoginForm extends Form
                     'for' => 'Amount',
                     'class'  => 'control-label col-sm-2'
                 ),
+            ),
+        ));
+
+        $this->add(array(
+            'name' => 'submit',
+            'attributes' => array(
+                'type'  => 'submit',
+                'value' => 'Deposit',
+                'id' => 'submitbutton',
+                'class' => 'btn btn-default'
             ),
         ));
 

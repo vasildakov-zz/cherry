@@ -94,15 +94,16 @@ class AuthenticationController extends AbstractActionController
     
     public function registerAction() 
     {
-    	return new ViewModel();
+    	return new ViewModel(array());
     }
+
 
 
     public function logoutAction() 
     {
         $authService = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
 
-        $user = $authService->getIdentity();
+        $player = $authService->getIdentity();
 
         $authService->clearIdentity();
         return $this->redirect()->toRoute('login');

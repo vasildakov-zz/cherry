@@ -48,4 +48,10 @@ class GameController extends AbstractActionController
         ));
     }
 
+
+    public function playAction() 
+    {
+        
+    }
+
 }

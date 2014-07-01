@@ -18,4 +18,10 @@ class BonusTest extends \PHPUnit_Framework_TestCase
         parent::tearDown();
     }
 
+
+    public function testBounusIsApplicable() 
+    {
+    	$transaction = new \Application\Entity\Transaction();
+    	
+    }
 }

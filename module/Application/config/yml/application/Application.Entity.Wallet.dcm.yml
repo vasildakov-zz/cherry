@@ -24,10 +24,10 @@ Application\Entity\Wallet:
   oneToOne:
     currency:
       targetEntity: Application\Entity\Currency
-      inversedBy: wallet
-      joinColumn:
-        name: currency_id
-        referencedColumnName: id
+#      inversedBy: wallet
+#      joinColumn:
+#        name: currency_id
+#        referencedColumnName: id
   oneToMany:
     transactions:
       targetEntity: Application\Entity\Transaction

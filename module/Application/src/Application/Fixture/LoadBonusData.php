@@ -22,14 +22,14 @@ class LoadBonusData implements OrderedFixtureInterface, FixtureInterface
                 "name" => "First deposit bonus", 
                 "reward" => 20, 
                 "unit" => \Application\Entity\Bonus::UNIT_PERCENTAGE, 
-                "trigger" => \Application\Entity\Bonus::TRIGGER_DEPOSIT,
+                "event_trigger" => \Application\Entity\Bonus::TRIGGER_DEPOSIT,
                 "multiplier" => 1,
                 ),
             array(
                 "name" => "First login bonus",   
                 "reward" => 50, 
                 "unit" => \Application\Entity\Bonus::UNIT_CURRENCY,
-                "trigger" => \Application\Entity\Bonus::TRIGGER_LOGIN,
+                "event_trigger" => \Application\Entity\Bonus::TRIGGER_LOGIN,
                 "multiplier" => 5,
             ),
         );
@@ -40,7 +40,7 @@ class LoadBonusData implements OrderedFixtureInterface, FixtureInterface
     		$bonus->setName($value['name']);
             $bonus->setReward($value['reward']);
             $bonus->setUnit($value['unit']);
-            $bonus->setTrigger($value['trigger']);
+            $bonus->setEventTrigger($value['event_trigger']);
             $bonus->setMultiplier($value['multiplier']);
             $bonus->setStatus(\Application\Entity\Bonus::STATUS_ACTIVE);
 

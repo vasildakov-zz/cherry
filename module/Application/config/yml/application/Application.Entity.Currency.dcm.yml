@@ -11,3 +11,10 @@ Application\Entity\Currency:
     name:
       type: string
       length: 255
+#  oneToOne:
+#    wallet:
+#      targetEntity: Application\Entity\Wallet
+#      inversedBy: currency
+#      joinColumn:
+#        name: wallet_id
+#        referencedColumnName: id

@@ -13,7 +13,8 @@ Application\Entity\Transaction:
       length: 2
     amount:
       type: decimal
-      precision: 2
+      precision: 10
+      scale: 2
     created_at:
       type: datetime
   manyToOne:

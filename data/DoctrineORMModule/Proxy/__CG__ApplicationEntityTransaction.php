@@ -64,10 +64,10 @@ class Transaction extends \Application\Entity\Transaction implements \Doctrine\O
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'type', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'amount', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'created_at');
+            return array('__isInitialized__', 'typeOptions', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'type', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'amount', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'created_at', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'wallet');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'type', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'amount', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'created_at');
+        return array('__isInitialized__', 'typeOptions', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'type', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'amount', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'created_at', '' . "\0" . 'Application\\Entity\\Transaction' . "\0" . 'wallet');
     }
 
     /**
@@ -252,6 +252,28 @@ class Transaction extends \Application\Entity\Transaction implements \Doctrine\O
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
 
         return parent::getCreatedAt();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setWallet(\Application\Entity\Wallet $wallet = NULL)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setWallet', array($wallet));
+
+        return parent::setWallet($wallet);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getWallet()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getWallet', array());
+
+        return parent::getWallet();
     }
 
 }

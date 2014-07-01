@@ -9,6 +9,26 @@
 		<?php echo $this->navigation('navigation')->menu()->setUlClass('nav')->render(); ?>
 	</div>
 	<div class="col-lg-9">
-		Deposit content
+		Please select the amount you wish to deposit:
+        <?php
+            $form = $this->form;
+            $form->setAttribute("id", "deposit")
+                 ->setAttribute("class", "");
+            $form->setAttribute('action', $this->url('deposit', array('action' => 'deposit')));
+
+            $form->prepare();
+            echo $this->form()->openTag($form);
+        ?>
+        <div class="col-md-6 col-sm-6 ">
+            <?php echo $this->formInput($form->get('amount')->setAttribute("id", "amount") ); ?>
+            <?php echo $this->formElementErrors($form->get('amount')); ?>
+        </div>
+
+        <div class="row p-t-10 m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
+            <div class="col-md-6 col-sm-6">
+                    <?php echo $this->formRow($form->get('submit')->setAttribute("class", "btn btn-info") ) ; ?>
+            </div>
+        </div>
+        <?php echo $this->form()->closeTag();?>
 	</div>
 </div>

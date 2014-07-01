@@ -9,6 +9,19 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Transaction
 {
+
+    /**
+     * Transaction types
+     */
+    const TYPE_DEPOSIT   = 1;
+
+    const TYPE_WITHDRAW  = 2;
+
+    public $typeOptions = array(
+                    self::TYPE_DEPOSIT      =>  "Deposit",
+                    self::TYPE_WITHDRAW     =>  "Withdraw",
+                );
+
     /**
      * @var integer
      */

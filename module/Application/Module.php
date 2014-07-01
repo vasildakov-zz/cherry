@@ -9,6 +9,7 @@
 
 namespace Application;
 
+use Zend\EventManager\EventInterface;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 
@@ -16,9 +17,19 @@ class Module
 {
     public function onBootstrap(MvcEvent $e)
     {
-        $eventManager        = $e->getApplication()->getEventManager();
+
+        $application    = $e->getTarget();
+        $eventManager   = $e->getApplication()->getEventManager();
+        $serviceManager = $application->getServiceManager();
+        $sharedManager  = $application->getEventManager()->getSharedManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
+
+        $entityManager = $serviceManager->get('doctrine.entitymanager.orm_default');
+        $evm = $entityManager->getEventManager();
+        $evm->addEventListener(array(\Doctrine\ORM\Events::postLoad), new \Application\Service\ServiceManagerListener($serviceManager));
+
+
     }
 
     public function getConfig()

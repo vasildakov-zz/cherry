@@ -3,11 +3,17 @@
 namespace Application\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Application\Service\ServiceLocatorAwareEntity as ServiceLocatorAwareEntity;
 
 /**
  * Player
+ * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
+ * @ORM\Entity(repositoryClass="Application\Repository\PlayerRepository") 
+ * @ORM\Table(name="player", options={"engine" = "InnoDB" })
  */
-class Player
+class Player extends ServiceLocatorAwareEntity
 {
 
     const GENDER_MALE       = 1;
@@ -317,12 +323,12 @@ class Player
     /**
      * Add wallets
      *
-     * @param \Application\Entity\Wallet $wallets
+     * @param \Application\Entity\Wallet $wallet
      * @return Player
      */
-    public function addWallet(\Application\Entity\Wallet $wallets)
+    public function addWallet(\Application\Entity\Wallet $wallet)
     {
-        $this->wallets[] = $wallets;
+        $this->wallets[] = $wallet;
 
         return $this;
     }
@@ -340,11 +346,11 @@ class Player
     /**
      * Remove wallets
      *
-     * @param \Application\Entity\Wallet $wallets
+     * @param \Application\Entity\Wallet $wallet
      */
-    public function removeWallet(\Application\Entity\Wallet $wallets)
+    public function removeWallet(\Application\Entity\Wallet $wallet)
     {
-        $this->wallets->removeElement($wallets);
+        $this->wallets->removeElement($wallet);
     }
 
     /**
@@ -414,10 +420,29 @@ class Player
     }
 
 
-
-    public function getBalance() 
+    /**
+     * Returns the total balance EUR + BNS
+     * 
+     * @param \Application\Entity\Currency $currency
+     * @return double $balance
+     */
+    public function getBalance(\Application\Entity\Currency $currency = null) 
     {
-        return 0;
+        $balance = 0;
+
+        foreach ($this->wallets as $wallet) 
+        {
+            if( isset($currency) and $currency != $wallet->getCurrency() ) continue;
+            
+            $transactions = $wallet->getTransactions();
+
+            foreach ($transactions as $transaction) 
+            {
+                $balance += $transaction->getAmount();
+            }
+        }
+
+        return $balance;
     }
 
 }

@@ -20,7 +20,7 @@ Application\Entity\Bonus:
     multiplier:
       type: integer
       length: 4
-    trigger:
+    event_trigger:
       type: smallint
       length: 2
     status:
